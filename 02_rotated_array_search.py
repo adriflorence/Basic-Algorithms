@@ -1,13 +1,22 @@
-def rotated_array_search(input_list, number):
-    """
-    Find the index by searching in a rotated sorted array
+def recursive_binary_search(input_list, number, start, end):
+    if start > end:
+        return -1
 
-    Args:
-       input_list(array), number(int): Input array to search and the target
-    Returns:
-       int: Index or -1
-    """
-   pass
+    middle_index = (start + end) // 2
+    middle_element = input_list[middle_index]
+
+    if middle_element == number:
+        return middle_index
+
+    left_side = recursive_binary_search(input_list, number, start, middle_index - 1)
+    right_side = recursive_binary_search(input_list, number, middle_index + 1, end)
+
+    return max(left_side, right_side)
+
+
+def rotated_array_search(input_list, number):
+    end = len(input_list) - 1
+    return recursive_binary_search(input_list, number, 0, end)
 
 def linear_search(input_list, number):
     for index, element in enumerate(input_list):
