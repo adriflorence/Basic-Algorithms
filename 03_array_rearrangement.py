@@ -8,36 +8,45 @@ def rearrange_digits(input_list):
         return input_list
 
     middle = len(input_list) // 2
-    left = rearrange_digits(input_list[:middle])
-    right = rearrange_digits(input_list[middle:])
+    left = merge_sort(input_list[:middle])
+    right = merge_sort(input_list[middle:])
 
-    return compare(left, right)
+    print(left)
+    print(right)
 
-def compare(left, right):
+def merge_sort(input_list):
+
+    if len(input_list) <= 1:
+        return input_list
+
+    middle = len(input_list) // 2
+    left = merge_sort(input_list[:middle])
+    right = merge_sort(input_list[middle:])
+
     result = []
     left_index = 0
     right_index = 0
 
     # iterate and compare left to right
     while left_index < len(left) and right_index < len(right):
-        if left[left_index] < right[right_index]:
+        if left[left_index] > right[right_index]:
             result.append(left[left_index])
             left_index += 1
         else:
             result.append(right[right_index])
             right_index += 1
     
-    # add any remaining items from the left array
+    # add remaining items from left side
     while left_index < len(left):
         result.append(left[left_index])
         left_index += 1
 
-    # add any remaining items form the right array
+    # add remaining items form right side
     while right_index < len(right):
         result.append(right[right_index])
         right_index += 1
 
-    # merged and sorted array
+    # return sorted array
     return result
 
 # TEST
