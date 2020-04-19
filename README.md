@@ -1,5 +1,13 @@
 # TASK 1
 
+Find the square root of the integer without using any Python library. You have to find the floor value of the square root.
+
+For example if the given number is 16, then the answer would be 4.
+
+If the given number is 27, the answer would be 5 because sqrt(5) = 5.196 whose floor value is 5.
+
+The expected time complexity is `O(log(n))`
+
 # TASK 2 - Search in a Rotated Sorted Array
 
 You are given a sorted array which is rotated at some random pivot point.
@@ -24,7 +32,7 @@ The expected answer would be [531, 42]. Another expected answer can be [542, 31]
 
 # TASK 4 - Dutch National Flag
 
-Given an input array consisting on only 0, 1, and 2, sort the array in a single traversal. You're not allowed to use any sorting function that Python provides.
+Given an input array consisting on only 0, 1, and 2, sort the array in a **single traversal**. You're not allowed to use any sorting function that Python provides.
 
 Note: O(n) does not necessarily mean single-traversal. For e.g. if you traverse the array twice, that would still be an O(n) solution but it will not count as single traversal.
 
