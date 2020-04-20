@@ -11,18 +11,19 @@ class TrieNode:
 
     # ["fun", "function", "factory"] -> expect to receive ["un", "unction", "actory"] back from node.suffixes()
     def suffixes(self, suffix = ''):
-        if len(self.children) == 0:
-            return []
-
-        results = []
+        suffixes = []
 
         if self.is_word and suffix != '':
-            results.append(suffix)
+            suffixes.append(suffix)
+
+        if len(self.children) == 0:
+            return suffixes
 
         for char in self.children:
-            results.extend(self.children[char].suffixes(suffix = suffix + char))
+            suffixes.extend(self.children[char].suffixes(suffix = suffix + char))
 
-        return results
+        return suffixes
+
 
     def print_children(self):
         for char in self.children:
@@ -56,7 +57,7 @@ class Trie:
         return node
 
 
-# TEST
+# TEST 1
 
 MyTrie = Trie()
 wordList = [
@@ -69,5 +70,21 @@ for word in wordList:
 
 prefix = "f"
 prefixNode = MyTrie.find(prefix)
-print(prefixNode.suffixes())
-# print(prefixNode)
+if(prefixNode):
+    print(prefixNode.suffixes())
+else:
+    print(prefix + " not found")
+
+# TEST 2
+
+MyTrie = Trie()
+wordList = []
+for word in wordList:
+    MyTrie.insert(word)
+
+prefix = "f"
+prefixNode = MyTrie.find(prefix)
+if prefixNode:
+    print('\n'.join(prefixNode.suffixes()))
+else:
+    print(prefix + " not found")
