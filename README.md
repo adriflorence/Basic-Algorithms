@@ -3,7 +3,6 @@
 Find the square root of the integer without using any Python library. You have to find the floor value of the square root.
 
 For example if the given number is 16, then the answer would be 4.
-
 If the given number is 27, the answer would be 5 because sqrt(5) = 5.196 whose floor value is 5.
 
 The expected time complexity is `O(log(n))`
@@ -24,7 +23,7 @@ Example:
 
 # TASK 3 - Rearrange Array Elements
 
-Rearrange Array Elements so as to form two number such that their sum is maximum. Return these two numbers. You can assume that all array elements are in the range [0, 9]. The number of digits in both the numbers cannot differ by more than 1. You're not allowed to use any sorting function that Python provides and the expected time complexity is O(nlog(n)).
+Rearrange Array Elements so as to form two number such that their sum is maximum. Return these two numbers. You can assume that all array elements are in the range [0, 9]. The number of digits in both the numbers cannot differ by more than 1. You're not allowed to use any sorting function that Python provides and the expected time complexity is `O(nlog(n))`.
 
 `Example: [1, 2, 3, 4, 5]`
 
@@ -34,17 +33,22 @@ The expected answer would be [531, 42]. Another expected answer can be [542, 31]
 
 Given an input array consisting on only 0, 1, and 2, sort the array in a **single traversal**. You're not allowed to use any sorting function that Python provides.
 
-Note: O(n) does not necessarily mean single-traversal. For e.g. if you traverse the array twice, that would still be an O(n) solution but it will not count as single traversal.
+Note: `O(n)` does not necessarily mean single-traversal. For e.g. if you traverse the array twice, that would still be an `O(n)` solution but it will not count as single traversal.
 
 # TASK 5 - Autocomplete with Tries
 
-See task in Notebook
+First, create a working trie for storing strings. Create:
+- A Trie class that contains the root node (empty string)
+- A TrieNode class that exposes the general functionality of the Trie, like inserting a word or finding the node which represents a prefix.
+
+Secondly, implement an autocomplete feature by creating a new function on the TrieNode object that will return all complete word suffixes that exist below it in the trie.
+
+For example, if the Trie contains the words `["fun", "function", "factory"]` and we ask for suffixes from the f node, we would expect to receive `["un", "unction", "actory"]` back from `node.suffixes()`.
 
 # TASK 6 - Max and Min in a Unsorted Array
 
-In this problem, look for smallest and largest integer from a list of unsorted integers. The code should run in O(n) time. Do not use Python's inbuilt functions to find min and max.
-
-Bonus Challenge: Is it possible to find the max and min in a single traversal?
+In this problem, look for smallest and largest integer from a list of unsorted integers. The code should run in `O(n)` time. Do not use Python's inbuilt functions to find min and max.
+Is it possible to find the max and min in a single traversal?
 
 # TASK 7 - HTTPRouter using a Trie
 
@@ -52,7 +56,7 @@ For this exercise we are going to implement an HTTPRouter like you would find in
 
 There are many different implementations of HTTP Routers such as regular expressions or simple string matching, but the Trie is an excellent and very efficient data structure for this purpose.
 
-The purpose of an HTTP Router is to take a URL path like "/", "/about", or "/blog/2019-01-15/my-awesome-blog-post" and figure out what content to return. In a dynamic web server, the content will often come from a block of code called a handler.
+The purpose of an HTTP Router is to take a URL path like `"/"`, `"/about"`, or `"/blog/2019-01-15/my-awesome-blog-post"` and figure out what content to return. In a dynamic web server, the content will often come from a block of code called a handler.
 
 First we need to implement a slightly different Trie than the one we used for autocomplete. Instead of simple words the Trie will contain a part of the http path at each node, building from the root node /
 
