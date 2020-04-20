@@ -1,15 +1,34 @@
-## Represents a single node in the Trie
+# Represents a single node in the Trie
 class TrieNode:
     def __init__(self):
         self.children = {}
         self.is_word = False
     
-    ## Add a child node in this Trie
+    # Add a child node in this Trie
     def insert(self, char):
         if char not in self.children:
            self.children[char] = TrieNode()
+
+    # ["fun", "function", "factory"] -> expect to receive ["un", "unction", "actory"] back from node.suffixes()
+    def suffixes(self, suffix = ''):
+        if len(self.children) == 0:
+            return []
+
+        results = []
+
+        if self.is_word and suffix != '':
+            results.append(suffix)
+
+        for char in self.children:
+            results.extend(self.children[char].suffixes(suffix = suffix + char))
+
+        return results
+
+    def print_children(self):
+        for char in self.children:
+            print(char)
         
-## The Trie itself containing the root node and insert/find functions
+# The Trie itself containing the root node and insert/find functions
 class Trie:
     def __init__(self):
         self.root = TrieNode()
@@ -35,3 +54,20 @@ class Trie:
             node = node.children[char]
 
         return node
+
+
+# TEST
+
+MyTrie = Trie()
+wordList = [
+    "ant", "anthology", "antagonist", "antonym", 
+    "fun", "function", "factory", 
+    "trie", "trigger", "trigonometry", "tripod"
+]
+for word in wordList:
+    MyTrie.insert(word)
+
+prefix = "f"
+prefixNode = MyTrie.find(prefix)
+print(prefixNode.suffixes())
+# print(prefixNode)
