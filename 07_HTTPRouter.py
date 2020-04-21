@@ -1,8 +1,21 @@
+
+class RouteTrieNode:
+    def __init__(self):
+        self.children = {}
+        self.handler = None
+
+    def insert(self, path_part):
+        if path_part not in self.children:
+            self.children[path_part] = RouteTrieNode()
+
+
 # A RouteTrie will store our routes and their associated handlers
 class RouteTrie:
     def __init__(self):
-      pass
-        # Initialize the trie with an root node and a handler, this is the root path or home page node
+        # Initialize the trie with an root node and a handler
+        # this is the root path or home page node
+        self.root = RouteTrieNode()
+        self.handler = None
 
     def insert(self):
         # Similar to our previous example you will want to recursively add nodes
@@ -14,16 +27,6 @@ class RouteTrie:
         # Return the handler for a match, or None for no match
         pass
 
-# A RouteTrieNode will be similar to our autocomplete TrieNode... with one additional element, a handler.
-class RouteTrieNode:
-    def __init__(self):
-        # Initialize the node with children as before, plus a handler
-        pass
-
-    def insert(self):
-        # Insert the node as before
-        pass
-
 
 # The Router class will wrap the Trie and handle 
 class Router:
@@ -32,10 +35,10 @@ class Router:
         # Create a new RouteTrie for holding our routes
         # You could also add a handler for 404 page not found responses as well!
 
+    # Add a handler for a path
     def add_handler(self):
-        # Add a handler for a path
-        # You will need to split the path and pass the pass parts
-        # as a list to the RouteTrie
+        
+        # split the path and pass the pass parts as a list to the RouteTrie
         pass
 
     def lookup(self):
@@ -47,11 +50,9 @@ class Router:
         # e.g. /about and /about/ both return the /about handler
 
 
-    def split_path(self):
-        pass
-        # you need to split the path into parts for 
-        # both the add_handler and loopup functions,
-        # so it should be placed in a function here
+    def split_path(self, path):
+        parts = path.split("/")
+        return parts
 
 
 # TEST CASES
