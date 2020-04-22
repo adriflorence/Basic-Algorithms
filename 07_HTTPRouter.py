@@ -65,8 +65,7 @@ class Router:
     def _split(self, path):
         parts = path.split("/")
         # removes trailing slash
-        if parts[-1] == '':
-            parts.pop()
+        parts = [x for x in parts if x!=""]
         return parts
 
 
