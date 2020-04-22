@@ -1,11 +1,10 @@
-# TASK 1
+# TASK 1 - SQUARE ROOT OF INTEGER
 
 Find the square root of the integer without using any Python library. You have to find the floor value of the square root.
 
 For example if the given number is 16, then the answer would be 4.
 If the given number is 27, the answer would be 5 because sqrt(5) = 5.196 whose floor value is 5.
 
-The expected time complexity is `O(log(n))`
 
 # TASK 2 - Search in a Rotated Sorted Array
 
@@ -15,11 +14,9 @@ You are given a sorted array which is rotated at some random pivot point.
 
 You are given a target value to search. If found in the array return its index, otherwise return -1.
 
-You can assume there are no duplicates in the array and your algorithm's runtime complexity must be in the order of O(log n).
+You can assume there are no duplicates in the array and your algorithm's runtime complexity must be in the order of `O(log n)`.
 
-Example:
-
-`Input: nums = [4,5,6,7,0,1,2], target = 0, Output: 4`
+`Example: Input: nums = [4,5,6,7,0,1,2], target = 0, Output: 4`.
 
 # TASK 3 - Rearrange Array Elements
 
@@ -71,3 +68,38 @@ The Router will initialize itself with a RouteTrie for holding routes and associ
 Bonus Points:
 - Add a not found handler to your Router which is returned whenever a path is not found in the Trie.
 - Handle trailing slashes! A request for '/about' or '/about/' are probably looking for the same page. Requests for '' or '/' are probably looking for the root handler. Handle these edge cases in your Router.
+
+
+# TIME AND SPACE COMPLEXITIES
+
+### 1. Square root of integer
+
+The time complexity is `O(log(n))`.
+The space complexity is not influenced by the size of the input, the method is just placin pointers, therefore it is `O(1)` in every case.
+
+### 2. Rotated Array Search
+
+The implemented algorithm (binary search algorithm)'s runtime complexity is O(log n) as required.
+The space complexity is not influenced by the size of the input, the method is just placin pointers, therefore it is `O(1)` in every case.
+
+### 3. Rearrange Array Elements
+
+The tast was solved with an implementation of the merge sort algorithm, having a time complexity of `O(n*log(n))`.
+
+### 4. Dutch National Flag
+
+This task was solved with a single traversal of the array, therefore the time complexity is `O(n)` where n is the length of the array. 
+
+### 5. Autocomplete with Tries
+
+"The worst-case runtime for creating a trie is a combination of m, the length of the longest key in the trie, and n, the total number of keys in the trie. Thus, the worst case runtime of creating a trie is O(mn)." 
+
+Cited from https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014
+
+### 6. Max and Min in a Unsorted Array
+
+This task was solved with a single traversal of the array, therefore the time complexity is `O(n)` where n is the length of the array. 
+
+### 7. HTTPRouter using a Trie
+
+The time complexity of the implemented Trie's search and insert methods depend on how many slashes the pathname has, therefore how many path blocks/parts the search method will need to go though. Time complexity therefore is `O(n)` where n is the sum of the parts in-between slashes. 
