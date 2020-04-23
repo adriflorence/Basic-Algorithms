@@ -57,34 +57,50 @@ class Trie:
         return node
 
 
-# TEST 1
+# TESTS
 
-MyTrie = Trie()
-wordList = [
+def autocomplete_test(prefix, trie):
+    prefix_node = trie.find(prefix)
+    if(prefix_node):
+        print(prefix, prefix_node.suffixes())
+    else:
+        print(prefix + " not found")
+    pass
+
+# TEST 1 & 2
+
+my_trie_1 = Trie()
+word_list_1 = [
     "ant", "anthology", "antagonist", "antonym", 
     "fun", "function", "factory", 
     "trie", "trigger", "trigonometry", "tripod"
 ]
-for word in wordList:
-    MyTrie.insert(word)
+for word in word_list_1:
+    my_trie_1.insert(word)
+
+prefix_1 = "f"
+prefix_2 = "tri"
+autocomplete_test(prefix_1, my_trie_1)
+autocomplete_test(prefix_2, my_trie_1)
+
+# TEST 3
+
+my_trie_3 = Trie()
+word_list_3 = []
+for word in word_list_3:
+    my_trie_3.insert(word)
 
 prefix = "f"
-prefixNode = MyTrie.find(prefix)
-if(prefixNode):
-    print(prefixNode.suffixes())
-else:
-    print(prefix + " not found")
 
-# TEST 2
+autocomplete_test(prefix, my_trie_3)
 
-MyTrie = Trie()
-wordList = []
-for word in wordList:
-    MyTrie.insert(word)
+# TEST 4
 
-prefix = "f"
-prefixNode = MyTrie.find(prefix)
-if prefixNode:
-    print('\n'.join(prefixNode.suffixes()))
-else:
-    print(prefix + " not found")
+my_trie_4 = Trie()
+word_list_4 = ["python", "python", "python"]
+for word in word_list_4:
+    my_trie_4.insert(word)
+
+prefix_4 = "q"
+
+autocomplete_test(prefix_4, my_trie_4)
