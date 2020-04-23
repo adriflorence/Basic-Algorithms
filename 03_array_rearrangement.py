@@ -4,6 +4,7 @@
 
 def rearrange_digits(input_list):
     if len(input_list) <= 1:
+        print(input_list)
         return input_list
 
     sorted_list = merge_sort(input_list)
@@ -89,3 +90,9 @@ test_function([[2, 2, 0, 0, 3, 3], [320, 320]])
 print('-----')
 print('expected: [97531, 8642]')
 test_function([[1, 9, 2, 8, 3, 7, 4, 6, 5], [97531, 8642]])
+print('-----')
+print('expected: []')
+test_function([[], []])
+print('-----')
+print('expected: [5]')
+test_function([[5], [5]])
