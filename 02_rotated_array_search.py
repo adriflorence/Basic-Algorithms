@@ -1,22 +1,29 @@
-def recursive_binary_search(input_list, number, start, end):
-    if start > end:
-        return -1
-
-    middle_index = (start + end) // 2
-    middle_element = input_list[middle_index]
-
-    if middle_element == number:
-        return middle_index
-
-    left_side = recursive_binary_search(input_list, number, start, middle_index - 1)
-    right_side = recursive_binary_search(input_list, number, middle_index + 1, end)
-
-    return max(left_side, right_side)
-
+# Example: [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]
 
 def rotated_array_search(input_list, number):
+    if number < 0:
+        return -1
+
+    start = 0
     end = len(input_list) - 1
-    return recursive_binary_search(input_list, number, 0, end)
+    
+    while start <= end:
+        middle = start + (end - start) // 2
+        
+        if input_list[middle] == number:
+            return middle
+        
+        if input_list[start] < input_list[middle]:
+            if number >= input_list[start] and number < input_list[middle]:
+                end = middle - 1
+            else:
+                start = middle + 1
+        else:
+            if number <= input_list[end] and number > input_list[middle]:
+                start = middle + 1
+            else:
+                end = middle - 1
+    return -1
 
 def linear_search(input_list, number):
     for index, element in enumerate(input_list):
@@ -32,8 +39,14 @@ def test_function(test_case):
     else:
         print("Fail")
 
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
-test_function([[6, 7, 8, 1, 2, 3, 4], 8])
-test_function([[6, 7, 8, 1, 2, 3, 4], 1])
-test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])    # index = 0 Pass
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])    # index = 1 Pass
+test_function([[6, 7, 8, 1, 2, 3, 4], 8])           # index = 2 Pass
+test_function([[6, 7, 8, 1, 2, 3, 4], 1])           # index = 3 Pass
+test_function([[6, 7, 8, 1, 2, 3, 4], 10])          # -1 Pass
+test_function([[6, 7, 8, 1, 2, 3, 4], -7])          # -1 Pass
+test_function([[1], 1])                             # index 0 Pass
+test_function([[1], 0])                             # -1 Pass
+test_function([[], 0])                              # -1 Pass
+
+# NOTE: algorithm does not work with negative numbers
