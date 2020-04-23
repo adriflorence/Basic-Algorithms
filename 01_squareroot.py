@@ -11,10 +11,22 @@ def sqrt(number):
     if (number == 0) or (number == 1):
         return number
 
-    else:
-        result = number ** 0.5
-        # returns floor value
-        return int(result // 1)
+    start = 0
+    end = number // 2
+
+    while start <= end:
+        middle = (start + end) // 2
+        # print(start, middle, end, number)
+        if middle * middle == number:
+            return middle
+
+        elif middle * middle < number:
+            start = middle + 1
+            result = middle
+        else:
+            end = middle - 1
+    
+    return result
 
 
 print("basic tests")
@@ -27,16 +39,16 @@ print("Pass" if (None == sqrt(-1)) else "Fail") # Pass
 print("------")
 print("squares of 3:")
 print("Pass" if  (3 == sqrt(10)) else "Fail") # Pass
-print("Pass" if  (3 == sqrt(11)) else "Fail") # Pass
-print("Pass" if  (3 == sqrt(12)) else "Fail") # Pass
-print("Pass" if  (3 == sqrt(13)) else "Fail") # Pass
-print("Pass" if  (3 == sqrt(14)) else "Fail") # Pass
-print("Pass" if  (3 == sqrt(15)) else "Fail") # Pass
-print("Pass" if  (3 == sqrt(16)) else "Fail") # Fail
-print("Pass" if  (4 == sqrt(16)) else "Fail") # Pass
+# print("Pass" if  (3 == sqrt(11)) else "Fail") # Pass
+# print("Pass" if  (3 == sqrt(12)) else "Fail") # Pass
+# print("Pass" if  (3 == sqrt(13)) else "Fail") # Pass
+# print("Pass" if  (3 == sqrt(14)) else "Fail") # Pass
+# print("Pass" if  (3 == sqrt(15)) else "Fail") # Pass
+# print("Pass" if  (3 == sqrt(16)) else "Fail") # Fail
+# print("Pass" if  (4 == sqrt(16)) else "Fail") # Pass
 
-print("------")
-print("large numbers")
-print("Pass" if (12345 == sqrt(152399025)) else "Fail") # Pass
-print("Pass" if (578 == sqrt(334084)) else "Fail") # Pass
-print("Pass" if (None == sqrt(-334084)) else "Fail") # Pass
+# print("------")
+# print("large numbers")
+# print("Pass" if (12345 == sqrt(152399025)) else "Fail") # Pass
+# print("Pass" if (578 == sqrt(334084)) else "Fail") # Pass
+# print("Pass" if (None == sqrt(-334084)) else "Fail") # Pass
