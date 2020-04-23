@@ -16,7 +16,6 @@ def sqrt(number):
 
     while start <= end:
         middle = (start + end) // 2
-        # print(start, middle, end, number)
         if middle * middle == number:
             return middle
 
@@ -39,16 +38,16 @@ print("Pass" if (None == sqrt(-1)) else "Fail") # Pass
 print("------")
 print("squares of 3:")
 print("Pass" if  (3 == sqrt(10)) else "Fail") # Pass
-# print("Pass" if  (3 == sqrt(11)) else "Fail") # Pass
-# print("Pass" if  (3 == sqrt(12)) else "Fail") # Pass
-# print("Pass" if  (3 == sqrt(13)) else "Fail") # Pass
-# print("Pass" if  (3 == sqrt(14)) else "Fail") # Pass
-# print("Pass" if  (3 == sqrt(15)) else "Fail") # Pass
-# print("Pass" if  (3 == sqrt(16)) else "Fail") # Fail
-# print("Pass" if  (4 == sqrt(16)) else "Fail") # Pass
+print("Pass" if  (3 == sqrt(11)) else "Fail") # Pass
+print("Pass" if  (3 == sqrt(12)) else "Fail") # Pass
+print("Pass" if  (3 == sqrt(13)) else "Fail") # Pass
+print("Pass" if  (3 == sqrt(14)) else "Fail") # Pass
+print("Pass" if  (3 == sqrt(15)) else "Fail") # Pass
+print("Pass" if  (3 == sqrt(16)) else "Fail") # Fail
+print("Pass" if  (4 == sqrt(16)) else "Fail") # Pass
 
-# print("------")
-# print("large numbers")
-# print("Pass" if (12345 == sqrt(152399025)) else "Fail") # Pass
-# print("Pass" if (578 == sqrt(334084)) else "Fail") # Pass
-# print("Pass" if (None == sqrt(-334084)) else "Fail") # Pass
+print("------")
+print("large numbers")
+print("Pass" if (12345 == sqrt(152399025)) else "Fail") # Pass
+print("Pass" if (578 == sqrt(334084)) else "Fail") # Pass
+print("Pass" if (None == sqrt(-334084)) else "Fail") # Pass
